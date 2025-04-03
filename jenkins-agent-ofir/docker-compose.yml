@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  ofir-agent:
+    image: jenkins-agent-ofir
+    container_name: ofir-agent
+    restart: unless-stopped
+    user: root
+    environment:
+      - JENKINS_URL=http://jenkins-ofir:8080
+      - JENKINS_SECRET=77b173e9ca580480bdd5620c42d3d48343c6dad533dcad42c0a618f23781a08d
+      - JENKINS_AGENT_NAME=ofir-agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - jenkins-net
+
+networks:
+  jenkins-net:
+    external: true
+
