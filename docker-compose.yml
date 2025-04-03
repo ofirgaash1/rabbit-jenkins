@@ -15,9 +15,6 @@ services:
     networks:
       - jenkins-net
 
-volumes:
-  rabbitmq_data:
-
 networks:
   jenkins-net:
     external: true
